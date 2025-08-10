@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stunning Admission Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .glass-container {
+            background: rgba(255,255,255,0.18);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.25);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 2px solid rgba(255,255,255,0.2);
+            max-width: 520px;
+            width: 98vw;
+            padding: 2.5rem 2rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem auto;
+        }
+        .glass-container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -90px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #ffd6e0 0%, #a1c4fd 100%);
+            opacity: 0.23;
+            filter: blur(18px);
+            z-index: 0;
+        }
+        .form-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+            color: #4e3fae;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 16px #b8aaff80;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 26px;
+        }
+        .toggle-btn {
+            background: linear-gradient(90deg,#ffaf7b,#d76d77 85%);
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 7px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            outline: none;
+            box-shadow: 0 2px 10px #d76d7770;
+            transition: background 0.2s, color 0.2s, transform 0.16s;
+        }
+        .toggle-btn:hover, .toggle-btn:focus {
+            filter: brightness(1.2);
+            transform: translateY(-3px) scale(1.07);
+            box-shadow: 0 4px 18px #d76d77a0;
+        }
+        form {
+            position: relative;
+            z-index: 1;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+        .input-group label {
+            font-size: 1rem;
+            color: #3b2561;
+            font-weight: 600;
+            margin-bottom: 0.33rem;
+            display: block;
+            letter-spacing: 1px;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 12px 44px 12px 38px;
+            background: rgba(255,255,255,0.33);
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+            color: #2a2356;
+            box-shadow: 0 2px 10px #b8aaff25;
+            transition: box-shadow 0.2s, background 0.25s, border 0.2s;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            background: rgba(225,215,255,0.85);
+            box-shadow: 0 0 0 2px #8f94fb;
+            border: 1.5px solid #43cea2;
+        }
+        .input-group input:hover,
+        .input-group select:hover,
+        .input-group textarea:hover {
+            background: rgba(242,236,255,0.55);
+            box-shadow: 0 0 4px #8f94fb50;
+            border: 1.5px solid #d76d77;
+        }
+        .input-group .fa-solid, .input-group .fa-regular {
+            position: absolute;
+            left: 11px;
+            top: 37px;
+            font-size: 1.1rem;
+            color: #8f94fb;
+            pointer-events: none;
+        }
+        .gender-row {
+            margin-bottom: 1.2rem;
+            color: #3b2561;
+        }
+        .gender-row label {
+            font-weight: 500;
+            margin-right: 1.1rem;
+            color: #3b2561;
+            transition: color 0.18s;
+            cursor: pointer;
+        }
+        .gender-row label:hover {
+            color: #d76d77;
+            text-shadow: 0 2px 8px #d76d7740;
+        }
+        /* File upload style */
+        .input-group input[type="file"] {
+            padding: 10px 0 10px 38px;
+            background: rgba(255,255,255,0.18);
+        }
+        .input-group input[type="file"]:hover {
+            background: rgba(225,215,255,0.27);
+            border: 1.5px solid #43cea2;
+        }
+        /* Button */
+        .submit-btn {
+            width: 100%;
+            padding: 13px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg,#43cea2 0%,#185a9d 100%);
+            color: #fff;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 18px #43cea250;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.22s, box-shadow 0.18s, transform 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
+        .submit-btn::before {
+            content: "";
+            position: absolute;
+            left: -50%;
+            top: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, #ffffff44, #43cea266 45%, #185a9d66 80%);
+            opacity: 0.3;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(.45,1.8,.6,.8);
+        }
+        .submit-btn:hover, .submit-btn:focus {
+            background: linear-gradient(90deg,#185a9d 30%,#43cea2 100%);
+            box-shadow: 0 6px 32px #43cea260;
+            transform: translateY(-2px) scale(1.03);
+        }
+        .submit-btn:hover::before,
+        .submit-btn:focus::before {
+            transform: translateX(0);
+        }
+        .success {
+            color: #34c759;
+            text-align: center;
+            margin: 0.7rem 0 0.25rem 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #34c75940;
+        }
+        @media (max-width: 600px) {
+            .glass-container {
+                padding: 1.3rem 0.5rem 1.2rem 0.5rem;
+                border-radius: 14px;
+            }
+            .form-title { font-size: 1.5rem;}
+            .theme-toggle { right: 6px; top: 6px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <div class="theme-toggle">
+            <button type="button" class="toggle-btn" id="toggleTheme"><i class="fa-solid fa-moon"></i> Dark Mode</button>
+        </div>
+        <div class="form-title">🚀 Admission Form</div>
+        <form id="admissionForm" autocomplete="off">
+            <div class="input-group">
+                <label for="fullName">Full Name</label>
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="input-group">
+                <label for="fatherName">Father's Name</label>
+                <i class="fa-solid fa-user-tie"></i>
+                <input type="text" id="fatherName" name="fatherName" required>
+            </div>
+            <div class="input-group">
+                <label for="motherName">Mother's Name</label>
+                <i class="fa-solid fa-user-tie"></i>
+                <input type="text" id="motherName" name="motherName" required>
+            </div>
+            <div class="input-group">
+                <label for="address">Address</label>
+                <i class="fa-solid fa-location-dot"></i>
+                <textarea id="address" name="address" rows="2" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="city">City</label>
+                <i class="fa-solid fa-city"></i>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="input-group">
+                <label for="state">State</label>
+                <i class="fa-solid fa-flag"></i>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="input-group">
+                <label for="pincode">Pin Code</label>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" id="pincode" name="pincode" maxlength="6" pattern="[0-9]{6}" required>
+            </div>
+            <div class="input-group">
+                <label for="qualification">Qualification</label>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <select id="qualification" name="qualification" required>
+                    <option value="">Select Qualification</option>
+                    <option value="10th">10th</option>
+                    <option value="12th">12th</option>
+                    <option value="graduation">Graduation</option>
+                    <option value="postgraduation">Post Graduation</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="phone">Mobile Number</label>
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" id="phone" name="phone" maxlength="10" required pattern="[0-9]{10}">
+            </div>
+            <div class="input-group">
+                <label for="age">Age</label>
+                <i class="fa-solid fa-calendar-days"></i>
+                <input type="number" id="age" name="age" min="15" max="60" required>
+            </div>
+            <div class="input-group">
+                <label for="course">Course</label>
+                <i class="fa-solid fa-book-open"></i>
+                <select id="course" name="course" required>
+                    <option value="">Select Course</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="java">Java</option>
+                </select>
+            </div>
+            <div class="gender-row">
+                <span style="font-weight:600;">Gender:</span>
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
+            <div class="input-group">
+                <label for="photo">Upload Photo</label>
+                <i class="fa-regular fa-image"></i>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+            </div>
+            <button class="submit-btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Submit</button>
+            <div id="result" class="success"></div>
+        </form>
+    </div>
+    <script>
+        // Dark/Light mode toggle logic
+        const themeBtn = document.getElementById('toggleTheme');
+        const html = document.documentElement;
+        function setTheme(theme) {
+            if(theme === "dark"){
+                document.body.style.background = "linear-gradient(135deg, #232526 0%, #414345 100%)";
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+            } else {
+                document.body.style.background = "linear-gradient(135deg, #7f53ac 0%, #647dee 100%)";
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+            }
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+        (function() {
+            let theme = localStorage.getItem('theme');
+            if (!theme) {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            setTheme(theme);
+        })();
+        themeBtn.onclick = function() {
+            let currentTheme = html.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        };
+
+        // Form validation and submission
+        document.getElementById('admissionForm').onsubmit = function(event) {
+            event.preventDefault();
+            var requiredFields = [
+                'fullName', 'fatherName', 'motherName', 'address', 'city', 'state',
+                'pincode', 'qualification', 'email', 'phone', 'age', 'course'
+            ];
+            var isValid = true;
+            requiredFields.forEach(function(id){
+                var el = document.getElementById(id);
+                if(!el.value.trim()) isValid = false;
+            });
+
+            var genderInputs = document.getElementsByName('gender');
+            var gender = '';
+            for (var i = 0; i < genderInputs.length; i++) {
+                if (genderInputs[i].checked) {
+                    gender = genderInputs[i].value;
+                    break;
+                }
+            }
+            var photo = document.getElementById('photo').files.length;
+
+            if (isValid && gender && photo) {
+                document.getElementById('result').innerText = "🎉 Form submitted successfully!";
+                document.getElementById('admissionForm').reset();
+            } else {
+                document.getElementById('result').innerText = "";
+                alert("Please fill all the details correctly.");
+            }
+        }
+    </script>
+</body>
+</html>
